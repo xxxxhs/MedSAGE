@@ -1,0 +1,23 @@
+name: medsage
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - pyyaml
+  - tqdm
+  - pip:
+      - sentence-transformers
+      - faiss-cpu
+      - transformers
+      - accelerate
+      - nltk
+      - rouge-score
+      - bert-score
+      - jieba
+      - openpyxl

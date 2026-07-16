@@ -1,0 +1,78 @@
+project_name: MedSAGE
+
+data:
+  min_answers_per_question: 2
+  question_id_col: question_id
+  question_text_col: content
+  answer_question_id_col: question_id
+  answer_text_col: content
+
+runtime:
+  seed: 6607
+  device: auto
+  batch_size: 64
+  save_intermediate: true
+
+retrieval:
+  top_k_retrieval: 50
+  faiss_search_k: 80
+  normalize_embeddings: true
+  remove_same_question_id: true
+
+sentence:
+  min_sentence_length: 4
+  max_sentence_length: 180
+  regex: "[。！？!?；;]+"
+
+medsage:
+  sentence_top_k: 10
+  similarity_threshold_tau: 0.7
+  weights:
+    centrality: 1.0
+    relevance: 1.0
+    diversity: 1.0
+
+rag_mmr:
+  lambda_mult: 0.7
+
+generation:
+  temperature: 0.7
+  top_p: 0.9
+  max_new_tokens: 1024
+  do_sample: true
+  dry_run: false
+
+models:
+  default_generation_model: huatuogpt7b
+  generation_models: [deepseek_r1, qwen_32b, llama4_17b, huatuogpt7b]
+
+evaluation:
+  multi_reference: true
+  best_match_reference: true
+  metrics: [bleu2, rouge_l, meteor, cider, bertscore_f1, distinct1, distinct2]
+
+ablation:
+  variants:
+    R_only: {centrality: 0.0, relevance: 1.0, diversity: 0.0}
+    C_only: {centrality: 1.0, relevance: 0.0, diversity: 0.0}
+    D_only: {centrality: 0.0, relevance: 0.0, diversity: 1.0}
+    RC: {centrality: 1.0, relevance: 1.0, diversity: 0.0}
+    RD: {centrality: 0.0, relevance: 1.0, diversity: 1.0}
+    CD: {centrality: 1.0, relevance: 0.0, diversity: 1.0}
+    Full_CRD: {centrality: 1.0, relevance: 1.0, diversity: 1.0}
+
+sensitivity:
+  k_values: [3, 5, 8, 10, 12]
+  tau_values: [0.5, 0.6, 0.7, 0.8, 0.9]
+  weight_settings:
+    "1_1_1": [1.0, 1.0, 1.0]
+    "2_1_1": [2.0, 1.0, 1.0]
+    "1_2_1": [1.0, 2.0, 1.0]
+    "1_1_2": [1.0, 1.0, 2.0]
+    "0.5_1_1": [0.5, 1.0, 1.0]
+    "1_0.5_1": [1.0, 0.5, 1.0]
+    "1_1_0.5": [1.0, 1.0, 0.5]
+
+statistics:
+  test: wilcoxon_signed_rank
+  correction: holm

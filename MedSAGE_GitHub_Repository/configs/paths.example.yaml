@@ -1,0 +1,23 @@
+data:
+  question_file: data/cmedqa2/question.csv
+  answer_file: data/cmedqa2/answer.csv
+
+models:
+  embedding_model_path: /path/to/m3e-small
+  bertscore_model_path: /path/to/bert-base-chinese
+  deepseek_r1: {model_path: /path/to/DeepSeek-R1, tokenizer_path: /path/to/DeepSeek-R1}
+  qwen_32b: {model_path: /path/to/Qwen-32B, tokenizer_path: /path/to/Qwen-32B}
+  llama4_17b: {model_path: /path/to/LLaMA4-17B, tokenizer_path: /path/to/LLaMA4-17B}
+  huatuogpt7b: {model_path: /path/to/HuatuoGPT-7B, tokenizer_path: /path/to/HuatuoGPT-7B}
+
+outputs:
+  root: outputs
+  prepared_questions: outputs/prepared/multi_answer_questions.jsonl
+  qid_to_answers: outputs/prepared/qid_to_answers.json
+  question_embeddings: outputs/index/question_embeddings.npy
+  faiss_index: outputs/index/question.faiss
+  retrieval_results: outputs/retrieval/retrieval_results.jsonl
+  evidence_dir: outputs/evidence
+  generation_dir: outputs/generation
+  evaluation_dir: outputs/evaluation
+  tables_dir: outputs/tables
