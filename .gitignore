@@ -41,3 +41,7 @@ cache/
 !examples/*.csv
 !examples/*.jsonl
 !examples/*.txt
+
+# Final reproducibility materials
+!reproducibility_results/
+!reproducibility_results/**
