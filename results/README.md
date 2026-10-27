@@ -1,3 +1,17 @@
+> ## Superseded historical release
+>
+> **The files documented in this directory are retained only for version history and should not be used as the finalized reproducibility materials for the current manuscript.**
+>
+> The finalized generated outputs, per-question metric files, physician-rating materials, sensitivity analyses, and entity-consistency audit corresponding to the current manuscript are available in:
+>
+> ```text
+> reproducibility_results/
+> ```
+>
+> Please use `reproducibility_results/` for verification of Tables 1 and 3–9. The current manuscript uses the model names `Qwen3-32B` and `HuatuoGPT-o1-7B`.
+>
+> ---
+
 # MedSAGE: Reproducibility Materials and Per-Question Evaluation Results
 
 This repository contains the implementation and reproducibility materials for the manuscript:
