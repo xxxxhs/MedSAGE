@@ -1,30 +1,52 @@
 # MedSAGE
 
-This repository contains the complete experimental implementation and finalized reproducibility materials for the manuscript:
+Official implementation and experimental materials for the manuscript:
 
 **Improving Medical Question Answering in Online Health Consultations Through Retrieval-Augmented Semantic Aggregation of Multiple Physician Responses**
 
-MedSAGE is a medical semantic aggregation module designed for the "one question, multiple answers" setting in online health consultation. This repository provides the code workflow for preprocessing eligible multi-answer data, dense retrieval, evidence construction, LLM generation, automatic evaluation, physician evaluation, ablation experiments, hyperparameter sensitivity analysis, reference-supported medical entity consistency analysis, and statistical testing.
+MedSAGE is a medical semantic aggregation framework designed for the "one question, multiple answers" setting in online health consultation. It integrates semantic centrality, query relevance, and evidence diversity to construct informative evidence contexts for medical question answering.
 
-The repository is intended to support reproduction and verification of the **complete experimental workflow and finalized reported results**.
+This repository provides the MedSAGE implementation, experiment configurations, and finalized question-level materials corresponding to the quantitative analyses reported in the manuscript.
 
-## Finalized reproducibility materials
+## Method overview
 
-The finalized files corresponding to the current manuscript are provided in:
+MedSAGE ranks candidate evidence using three complementary signals:
+
+- **Semantic Centrality (C):** structural importance within the semantic similarity graph;
+- **Query Relevance (R):** semantic relevance to the target medical question;
+- **Diversity (D):** complementary information relative to selected evidence.
+
+The three components are normalized within each candidate set and combined through weighted aggregation:
+
+```text
+Score = wC * C_norm + wR * R_norm + wD * D_norm
+```
+
+The default MedSAGE configuration is:
+
+```text
+C:R:D = 1:1:1
+K = 10
+tau = 0.7
+```
+
+## Experimental materials
+
+Finalized manuscript-related materials are organized under:
 
 ```text
 reproducibility_results/
-├── Table 1/   Complete 49,176-question generated outputs and per-question metrics
-├── Table 3/   Blinded physician-evaluation outputs and item-level ratings
-├── Table 4/   Controlled 2,000-question baseline comparison and per-question metrics
-├── Table 5/   Component-level ablation outputs and per-question metrics
-├── Table 6/   Evidence-size sensitivity outputs and per-question metrics
-├── Table 7/   Similarity-threshold sensitivity outputs and per-question metrics
-├── Table 8/   C/R/D coefficient sensitivity outputs and per-question metrics
-└── Table 9/   Medical-entity dictionary, category statistics, and per-question audit
+├── Table 1/   Main model comparison
+├── Table 3/   Physician evaluation
+├── Table 4/   Retrieval and aggregation comparison
+├── Table 5/   Component ablation
+├── Table 6/   Evidence-size sensitivity analysis
+├── Table 7/   Similarity-threshold sensitivity analysis
+├── Table 8/   C/R/D coefficient sensitivity analysis
+└── Table 9/   Medical entity consistency analysis
 ```
 
-The final model names used in the manuscript and released files are:
+The model backbones used in the manuscript include:
 
 ```text
 DeepSeek-R1
@@ -33,91 +55,86 @@ LLaMA4-17B
 HuatuoGPT-o1-7B
 ```
 
-For Table 1, each model is evaluated under `Base`, `RAG`, and `MedSAGE` settings on the complete 49,176-question multi-answer subset.
+Table 1 reports the main comparison across Base, RAG, and MedSAGE settings. Tables 4–8 contain the controlled comparison, ablation, and sensitivity analyses. Table 3 contains physician-evaluation materials, and Table 9 contains the medical entity consistency analysis.
 
-For Tables 4–8, the controlled analyses use the same fixed 2,000-question evaluation set with HuatuoGPT-o1-7B. Table 3 contains the blinded physician-evaluation materials, and Table 9 contains the reference-supported medical entity consistency audit.
-
-> **Important:** The `results/` directory is retained only as a historical/superseded release for version history. The files in `reproducibility_results/` are the finalized materials corresponding to the current manuscript and should be used for verification.
-
-## What is not included
-
-This repository does **not** redistribute the complete original cMedQA2 source dataset, large language model weights, sentence embedding model weights, FAISS index files, API keys, or private configuration files. Users should obtain datasets and model weights from their original sources.
-
-The generated outputs and per-question result files required to verify the manuscript tables are included under `reproducibility_results/`.
+The question-level result files provide the generated outputs and corresponding evaluation information used for the reported analyses.
 
 ## Repository structure
 
 ```text
 MedSAGE/
-├── configs/                    Configuration files and example paths
-├── docs/                       Data, model, and reproducibility documentation
-├── examples/                   Small example files for format checking
-├── medsage/                    Core implementation
-├── scripts/                    End-to-end experiment scripts
-├── outputs/                    Runtime outputs, ignored by Git except .gitkeep
-├── reproducibility_results/    Finalized results for Tables 1 and 3–9
-├── results/                    Superseded historical result release
+├── configs/                    Experiment configurations
+├── docs/                       Supporting documentation
+├── examples/                   Example input formats
+├── medsage/                    Core MedSAGE implementation
+├── scripts/                    Experiment scripts
+├── outputs/                    Runtime outputs
+├── reproducibility_results/    Finalized manuscript-related results
+├── results/                    Earlier result release
 ├── README.md
 ├── requirements.txt
 ├── environment.yml
-├── .gitignore
 ├── LICENSE
 └── CITATION.cff
 ```
 
-## Installation
+## Experimental settings
+
+The released configurations cover the main experiments reported in the manuscript, including:
+
+```text
+Main comparison:
+Base / RAG / MedSAGE
+
+Aggregation comparison:
+RAG / RAG+Avg / RAG+MMR / MedSAGE
+
+Component analysis:
+C / R / D / C+R / R+D / C+D / C+R+D
+
+Evidence size:
+K = 3, 5, 8, 10, 12
+
+Similarity threshold:
+tau = 0.5, 0.6, 0.7, 0.8, 0.9
+```
+
+Additional C/R/D weighting configurations follow the settings reported in the manuscript.
+
+## Evaluation
+
+The automatic evaluation metrics used in the manuscript include:
+
+```text
+BLEU-2
+ROUGE-L
+METEOR
+CIDEr
+BERTScore-F1
+```
+
+Question-level outputs and metric information are provided in the corresponding experimental result directories.
+
+## Implementation note
+
+The released implementation corresponds to the finalized MedSAGE pipeline used for the reported quantitative experiments. The semantic graph uses binary edges determined by the similarity threshold, centrality is calculated as binary node degree, and centrality, relevance, and diversity are normalized before weighted aggregation.
+
+An earlier supplementary version contained an illustrative intermediate-scoring example originating from a prototype implementation. That example was not used to generate the quantitative results reported in Tables 1 and 4–8. The current implementation and released result materials correspond to the finalized experimental pipeline.
+
+## Usage
+
+Install the project dependencies and configure the required local paths before running the experiment scripts.
 
 ```bash
-conda create -n medsage python=3.10
-conda activate medsage
 pip install -r requirements.txt
 ```
 
-## Quick start
+The main experiment entry points are available in the `scripts/` directory, with configuration files provided under `configs/`.
 
-1. Download cMedQA2 and place the files as:
+## Citation
 
-```text
-data/cmedqa2/question.csv
-data/cmedqa2/answer.csv
-```
-
-2. Copy the path template and modify local data/model paths:
-
-```bash
-cp configs/paths.example.yaml configs/paths.yaml
-```
-
-3. Run the full pipeline for one model:
-
-```bash
-python scripts/run_full_pipeline.py --config configs/default.yaml --paths configs/paths.yaml --model huatuogpt7b
-```
-
-Use `--dry-run` to generate prompts/evidence without running LLM inference.
-
-## Main experiment commands
-
-```bash
-python scripts/01_prepare_cmedqa2.py --config configs/default.yaml --paths configs/paths.yaml
-python scripts/02_build_faiss_index.py --config configs/default.yaml --paths configs/paths.yaml
-python scripts/03_retrieve_evidence.py --config configs/default.yaml --paths configs/paths.yaml
-python scripts/04_run_generation.py --config configs/default.yaml --paths configs/paths.yaml --scheme medsage --model huatuogpt7b
-python scripts/05_evaluate_main_results.py --config configs/default.yaml --paths configs/paths.yaml
-python scripts/08_run_ablation_study.py --config configs/default.yaml --paths configs/paths.yaml --model huatuogpt7b
-python scripts/09_run_hyperparameter_sensitivity.py --config configs/default.yaml --paths configs/paths.yaml --model huatuogpt7b
-python scripts/10_entity_consistency_analysis.py --config configs/default.yaml --paths configs/paths.yaml
-python scripts/11_statistical_tests.py --config configs/default.yaml --paths configs/paths.yaml --model huatuogpt7b
-```
-
-## Data note
-
-The complete original cMedQA2 dataset should be obtained from the original public source. The dataset itself is not redistributed here. The released reproducibility files retain the identifiers needed to verify the reported analyses.
-
-## Model note
-
-The LLM checkpoints and m3e-small embedding model are not included. Users should download the models from the corresponding official sources and configure their local paths in `configs/paths.yaml`.
+If you use MedSAGE or the released experimental materials in your research, please cite the corresponding manuscript.
 
 ## License
 
-This code is released under the MIT License. Data and model weights are governed by their original licenses.
+This code is released under the MIT License. Associated datasets and model resources are governed by their respective licenses.
