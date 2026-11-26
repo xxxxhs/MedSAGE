@@ -33,14 +33,33 @@ medsage:
     diversity: 1.0
 
 rag_mmr:
+  # Legacy reference-generation default; not the retrospective protocol.
   lambda_mult: 0.7
+
+# Documented study protocols; these settings do not automatically run or sample experiments.
+study_protocols:
+  retrospective_retrieval:
+    remove_same_question_id: false
+    mmr_candidate_pool: 50
+    mmr_lambda: 0.5
+  controlled_evaluation:
+    sample_size: 10000
+    reported_sampling_seed: 202612
+  physician_evaluation:
+    sample_size: 200
+    reported_sampling_seed: 202611
 
 generation:
   temperature: 0.7
   top_p: 0.9
-  max_new_tokens: 1024
+  max_new_tokens: 750
   do_sample: true
   dry_run: false
+  # Prompt length target is instructional, not a filtering criterion.
+  target_chinese_characters: 450
+  requested_character_range: [400, 500]
+  # Explicit thinking is disabled where the inference backend supports it.
+  thinking_requested: false
 
 models:
   default_generation_model: huatuogpt7b
