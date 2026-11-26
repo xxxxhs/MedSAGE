@@ -38,7 +38,7 @@ def main():
     generator=None
     if not dry:
         mc=cfg['models'][model_name]; generator=LocalHFGenerator(mc['model_path'],mc.get('tokenizer_path',mc['model_path']),mc.get('device_map','auto'),mc.get('torch_dtype','auto'))
-    gen_cfg=GenerationConfig(float(cfg['generation'].get('temperature',0.7)),float(cfg['generation'].get('top_p',0.9)),int(cfg['generation'].get('max_new_tokens',1024)),bool(cfg['generation'].get('do_sample',True)))
+    gen_cfg=GenerationConfig(float(cfg['generation'].get('temperature',0.7)),float(cfg['generation'].get('top_p',0.9)),int(cfg['generation'].get('max_new_tokens',750)),bool(cfg['generation'].get('do_sample',True)))
     outputs=[]
     for item in tqdm(rows, desc=f'Generating {args.scheme}/{model_name}'):
         evidence=build_evidence(args.scheme,item,cfg,embedder)
