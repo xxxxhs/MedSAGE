@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "protocol": "stage7_generation_input_v1_from_stage3_20261105",
+  "schema_fingerprint": "298ae3c0e6b6d42aff6e5bdd951a123d60f2e962ea001d5ac9216e4d84497c0e",
+  "questions_per_method": 49176,
+  "methods": [
+    "Base",
+    "RAG",
+    "RAG+MMR",
+    "MedSAGE"
+  ],
+  "conditions_if_four_llms_used": 786816,
+  "evidence_budget": {
+    "Base": 0,
+    "RAG": 10,
+    "RAG+MMR": 10,
+    "MedSAGE": 10
+  },
+  "generation_model": "not_fixed_here; reuse these four inputs for each of the four LLMs",
+  "messages_format": "OpenAI-compatible roles; no model or API calls",
+  "prompt_source": "Existing manuscript Supplementary Appendix D, Table S7",
+  "not_in_prompt": [
+    "retrieval_score",
+    "MMR_score",
+    "centrality",
+    "relevance",
+    "diversity",
+    "weights"
+  ],
+  "note_stage3_mmr_lambda": "global_sentence_HNSW_top50_then_greedy_MMR_lambda_0.5",
+
+  "source_stage3_sha256": {
+    "RAG": "29a159c3e9e8c08a88ae5db18c87b5409c598a0d0d92df86855752065ca18c36",
+    "RAG+MMR": "26409328cd1ee652abb4b44adc0c1bc4692cefb88a22c569267edc768370656d",
+    "MedSAGE": "430f076b0f446a4ab2012aacf22097d80e02387a40a75d95227c9e6f3abc3e35"
+  },
+  "source_stage3_manifest_sha256": "72f51315cb0cf0f9e1fa756ba353e09d28979372042d0871658d3778e5abd4f7",
+  "outputs": {
+    "Base": {
+      "file": "07_Base_FULL49176.jsonl",
+      "rows": 49176,
+      "sha256": "3cbd2b712975ec1f00c8169e393d3eae25041d3441e191684e5e3ab7c4a546bc",
+      "size_bytes": 40599985
+    },
+    "RAG": {
+      "file": "07_RAG_FULL49176.jsonl",
+      "rows": 49176,
+      "sha256": "81f96a36498499a06b4c0976d3f29c2213456a4f4d1747bda291e9ff7d90e30c",
+      "size_bytes": 188721078
+    },
+    "RAG+MMR": {
+      "file": "07_RAG_MMR_FULL49176.jsonl",
+      "rows": 49176,
+      "sha256": "8c517251306a11d12a84b14657853bb6b349d9fa34d63973ec28729f7df4a6a3",
+      "size_bytes": 203028380
+    },
+    "MedSAGE": {
+      "file": "07_MedSAGE_FULL49176.jsonl",
+      "rows": 49176,
+      "sha256": "a2ed8677628d69e96d87028bf872315a722746556e62361a3b2be8de6d3be8c7",
+      "size_bytes": 191387630
+    }
+  },
+  "completed_at": "2026-11-05 13:14:24",
+  "duration_seconds": 35.92
+}
