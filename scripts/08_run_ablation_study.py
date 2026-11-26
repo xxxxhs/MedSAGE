@@ -22,7 +22,7 @@ def main():
     rows=read_jsonl(cfg['outputs']['retrieval_results']); embedder=SentenceEmbedder(cfg['models']['embedding_model_path'],cfg['runtime'].get('device','auto'))
     generator=None
     if not args.dry_run:
-        mc=cfg['models'][model]; generator=LocalHFGenerator(mc['model_path'],mc.get('tokenizer_path',mc['model_path'])); gen_cfg=GenerationConfig(float(cfg['generation'].get('temperature',0.7)),float(cfg['generation'].get('top_p',0.9)),int(cfg['generation'].get('max_new_tokens',1024)),bool(cfg['generation'].get('do_sample',True)))
+        mc=cfg['models'][model]; generator=LocalHFGenerator(mc['model_path'],mc.get('tokenizer_path',mc['model_path'])); gen_cfg=GenerationConfig(float(cfg['generation'].get('temperature',0.7)),float(cfg['generation'].get('top_p',0.9)),int(cfg['generation'].get('max_new_tokens',750)),bool(cfg['generation'].get('do_sample',True)))
     out_dir=Path(cfg['outputs']['generation_dir'])/model/'ablation'; ensure_dir(out_dir)
     for name,w in cfg['ablation']['variants'].items():
         outs=[]; weights=(float(w['centrality']),float(w['relevance']),float(w['diversity']))
