@@ -66,7 +66,7 @@ The documented generation settings (Multimedia Appendix 1, Tables S3 and S6) are
 
 The updated prompt implementation is in `medsage/prompting.py`, with templates in `examples/sample_prompt.txt`. RAG+Avg uses the mean candidate-sentence embedding, excluding the query embedding.
 
-The manuscript specifies same-question-ID exclusion for downstream generation, unlike retrospective retrieval. The reference retrieval module defaults to exclusion; this does not independently establish that every historical generation input was filtered. Original retrieval and generation manifests must be consulted to verify the actual protocol.
+**Protocol correction (2026-11-26):** In the archived full-scale generation inputs (49,176 questions), same-question-ID evidence was not excluded. The Table 1 retrieval manifest records `same_question_id_excluded: false`, and the Table 3 generation-input manifest links to those frozen retrieval outputs. The reference retrieval module defaults to exclusion, which differs from the archived full-scale input protocol. Reference-answer overlap may affect the automated generation scores and comparisons between strategies; these results do not establish generalization to unseen questions. The same-ID policy for the controlled 10,000-question runs requires separate verification. See the [current repository README](../README.md) for the revision archive and scope.
 
 Automatic generation metrics: BLEU-2, ROUGE-L, BERTScore-F1, METEOR-lite, and CIDEr-lite. The first four use metric-specific best-match reference scoring; CIDEr-lite uses an averaged multi-reference representation. The lite metrics must not be interpreted as standard METEOR or CIDEr.
 
