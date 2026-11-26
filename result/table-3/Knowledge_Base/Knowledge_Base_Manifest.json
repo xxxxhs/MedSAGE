@@ -1,0 +1,88 @@
+{
+  "input_mode": "multi_exact",
+  "expected_questions": 49176,
+  "min_answers_per_question": 2,
+  "input_files": {
+    "questions": "E:\\Desktop\\10.14\\question_multi.csv",
+    "answers": "E:\\Desktop\\10.14\\answer_multi.csv"
+  },
+  "keeps_duplicate_answer_rows": true,
+  "excludes_same_question_id": false,
+  "sentence_segmentation": "。！？!?；; and newline",
+  "code_version": "stage1_20261102_v1",
+  "question_columns": {
+    "qid": "question_id",
+    "text": "content",
+    "all": [
+      "question_id",
+      "content"
+    ],
+    "encoding": "utf-8-sig"
+  },
+  "answer_columns": {
+    "qid": "question_id",
+    "text": "content",
+    "doctor_id": null,
+    "original_answer_id": null,
+    "all": [
+      "question_id",
+      "content"
+    ],
+    "encoding": "utf-8-sig"
+  },
+  "question_file_rows": 49176,
+  "unique_question_ids": 49176,
+  "duplicate_identical_question_rows": 0,
+  "answer_file_rows": 155442,
+  "answer_rows_without_matching_question": 0,
+  "orphan_examples": [],
+  "blank_answer_count": 0,
+  "blank_answer_examples": [],
+  "selected_question_count": 49176,
+  "selected_answer_count": 155442,
+  "questions_below_min_answers": 0,
+  "below_min_examples": [],
+  "answer_count_histogram_capped_at_20": {
+    "2": 25924,
+    "3": 10768,
+    "4": 5365,
+    "5": 2712,
+    "6": 1509,
+    "7": 958,
+    "8": 591,
+    "9": 407,
+    "10": 271,
+    "11": 194,
+    "12": 120,
+    "13": 86,
+    "14": 69,
+    "15": 48,
+    "16": 35,
+    "17": 28,
+    "18": 23,
+    "19": 15,
+    "20": 53
+  },
+  "sqlite_questions": 49176,
+  "sqlite_answers": 155442,
+  "sqlite_sentences": 440031,
+  "generated_question_rows": 49176,
+  "generated_answer_documents": 155442,
+  "generated_sentence_documents": 440031,
+  "answers_without_sentence": 0,
+  "avg_answers_per_question": 3.16093,
+  "avg_sentences_per_answer": 2.83084,
+  "time_seconds": 18.28,
+  "output_files": [
+    "answer_documents.jsonl",
+    "expert_kb.sqlite",
+    "question_answer_counts.csv",
+    "questions_49176.jsonl",
+    "sentence_documents.jsonl"
+  ],
+  "input_sha256": {
+    "questions": "7999081382c616f421328fa66ab88e141c71bb64119fa5c947c43fdf7353816f",
+    "answers": "95e8c773bf3eb337cae4f0742039e26c9cbb738917f8b2e87b180d0e92ce3036"
+  },
+  "status": "PASS"
+}
