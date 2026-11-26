@@ -44,7 +44,7 @@ def select_rag_sentences(sentences, top_k=10):
 
 def select_avg_sentences(sentences, sentence_embeddings, query_embedding, top_k=10):
     if not sentences: return {'selected': [], 'scores': []}
-    centroid=np.mean(np.vstack([sentence_embeddings, query_embedding.reshape(1,-1)]), axis=0)
+    centroid=np.mean(sentence_embeddings, axis=0)
     scores=cosine_vector(sentence_embeddings, centroid); order=np.argsort(-scores)[:min(top_k,len(sentences))]
     rows=[{'index': int(i), 'sentence': sentences[int(i)], 'score': float(scores[int(i)])} for i in order]
     return {'selected': [r['sentence'] for r in rows], 'scores': rows}
