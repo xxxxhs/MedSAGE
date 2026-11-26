@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "protocol": {
+    "version": "stage5_20261103_v2_reference_plus_pool_facets",
+    "expected_queries": 49176,
+    "source_methods": [
+      "RAG",
+      "RAG+MMR",
+      "MedSAGE"
+    ],
+    "stage3_scheme": "stage3_full49176_v1_auditable_crd",
+    "cluster_cos": 0.82,
+    "match_cos": 0.82,
+    "dup_cos": 0.85,
+    "alpha": 0.5,
+    "top_k": 10,
+    "consensus_min_different_answer_records": 2,
+    "use_retrieval_encoder_for_reference_matching": true,
+    "use_reference_sentences_plus_pooled_top10_for_alpha_ndcg_normalizer": true,
+    "no_entity_dictionary": true,
+    "no_llm_api": true,
+    "no_human_annotation": true,
+    "stage3_output_sha256": {
+      "RAG": "29a159c3e9e8c08a88ae5db18c87b5409c598a0d0d92df86855752065ca18c36",
+      "RAG+MMR": "26409328cd1ee652abb4b44adc0c1bc4692cefb88a22c569267edc768370656d",
+      "MedSAGE": "430f076b0f446a4ab2012aacf22097d80e02387a40a75d95227c9e6f3abc3e35"
+    },
+    "stage1_manifest_sha256": "2a8ca0b9d8dba7a37853b242a0430a4af0e4765ce0654bd069dff3fbfb84e98b",
+    "stage2_manifest_sha256": "62e13fb7fd7dae0ae16f859577efc3bc2061fd58600b282f1978d5d22eed00df",
+    "stage3_manifest_sha256": "72f51315cb0cf0f9e1fa756ba353e09d28979372042d0871658d3778e5abd4f7"
+  },
+  "queries_evaluated": 49176,
+  "methods": [
+    "RAG",
+    "RAG+MMR",
+    "MedSAGE"
+  ],
+  "top_k": 10,
+  "source_sentences_as_facets": 184220,
+  "facets_supported_by_2plus_different_answer_records": 46898,
+  "queries_with_any_consensus_like_facet": 38113,
+  "queries_with_pooled_alpha_ndcg_eligible": 49176,
+  "facets_per_question_min_avg_max": [
+    1,
+    3.746136326663413,
+    26
+  ],
+  "method_metric_rows": 147528,
+  "outputs": [
+    "05_Retrieval_Semantic_Facets_49176.csv",
+    "05_Full_Semantic_Metrics_49176.csv",
+    "05_Semantic_Method_Summary.csv",
+    "05_AnswerCount_Stratified_Summary.csv",
+    "05_Semantic_Paired_Bootstrap.csv",
+    "05_analysis_cache.sqlite"
+  ],
+  "not_computed": [
+    "CVC: no reliable context-aware medical contradiction labels",
+    "true clinical-facet CFC: automatic semantic clusters do not constitute medically validated clinical facets",
+    "physician-verified medical relevance nDCG/MAP",
+    "independently evaluated medical correctness"
+  ],
+  "cautions": [
+    "Medical reference derives from original physician answers; same-QID historical answers are eligible, per protocol.",
+    "Automatic semantic clusters use retrieval M3E-Small embeddings and thus are not independent medical judgments.",
+    "Both facets and aspect relevance are proxy annotations; automatic semantic similarity may merge incompatible claims.",
+    "Pooled alpha-nDCG ideal ranking is greedily selected from all original reference sentences plus union of the three methods Top10; not an exhaustive-corpus ideal.",
+    "Distinct answer records do not establish distinct clinician identities.",
+    "Stage3 method candidate pools differ; overall pipeline effects cannot be causally attributed solely to C-R-D."
+  ],
+  "finished_at": "2026-11-03 12:02:19"
+}

@@ -1,0 +1,73 @@
+﻿answers_per_question,method,metric,total_queries,eligible_queries,not_applicable_queries,macro_mean
+2 answers,RAG,auto_SFC@10,25924,25924,0,0.5904973789289347
+2 answers,RAG,auto_cross_source_SFC@10,25924,25924,0,0.5895194287301853
+2 answers,RAG,auto_CSC_proxy@10,25924,16062,9862,0.9029379458171016
+2 answers,RAG,auto_consensus_any@10,25924,16062,9862,0.9297388542018725
+2 answers,RAG,pooled_auto_alpha_nDCG@10,25924,25924,0,0.6178254085626788
+2 answers,RAG,near_duplicate_pair_fraction@10,25924,25924,0,0.8606165029402183
+3–4 answers,RAG,auto_SFC@10,16133,16133,0,0.5280744904247964
+3–4 answers,RAG,auto_cross_source_SFC@10,16133,16133,0,0.5275865774066657
+3–4 answers,RAG,auto_CSC_proxy@10,16133,14946,1187,0.8888492488301802
+3–4 answers,RAG,auto_consensus_any@10,16133,14946,1187,0.915725633444421
+3–4 answers,RAG,pooled_auto_alpha_nDCG@10,16133,16133,0,0.6044218239645173
+3–4 answers,RAG,near_duplicate_pair_fraction@10,16133,16133,0,0.8806697108066971
+5–7 answers,RAG,auto_SFC@10,5179,5179,0,0.42445243752397344
+5–7 answers,RAG,auto_cross_source_SFC@10,5179,5179,0,0.4240853414675551
+5–7 answers,RAG,auto_CSC_proxy@10,5179,5165,14,0.8550606186327386
+5–7 answers,RAG,auto_consensus_any@10,5179,5165,14,0.8775879315908358
+5–7 answers,RAG,pooled_auto_alpha_nDCG@10,5179,5179,0,0.5558115526613456
+5–7 answers,RAG,near_duplicate_pair_fraction@10,5179,5179,0,0.9008431486129883
+8 or more answers,RAG,auto_SFC@10,1940,1940,0,0.30625984327300515
+8 or more answers,RAG,auto_cross_source_SFC@10,1940,1940,0,0.30620829688125256
+8 or more answers,RAG,auto_CSC_proxy@10,1940,1940,0,0.781151202749141
+8 or more answers,RAG,auto_consensus_any@10,1940,1940,0,0.8002190721649485
+8 or more answers,RAG,pooled_auto_alpha_nDCG@10,1940,1940,0,0.48287243681107417
+8 or more answers,RAG,near_duplicate_pair_fraction@10,1940,1940,0,0.9263344788087057
+2 answers,RAG+MMR,auto_SFC@10,25924,25924,0,0.6098623078947621
+2 answers,RAG+MMR,auto_cross_source_SFC@10,25924,25924,0,0.6082893492096679
+2 answers,RAG+MMR,auto_CSC_proxy@10,25924,16062,9862,0.9078340033560429
+2 answers,RAG+MMR,auto_consensus_any@10,25924,16062,9862,0.9402267848989926
+2 answers,RAG+MMR,pooled_auto_alpha_nDCG@10,25924,25924,0,0.6072435794633524
+2 answers,RAG+MMR,near_duplicate_pair_fraction@10,25924,25924,0,0.6356169315434861
+3–4 answers,RAG+MMR,auto_SFC@10,16133,16133,0,0.5441626886126546
+3–4 answers,RAG+MMR,auto_cross_source_SFC@10,16133,16133,0,0.5435308354626708
+3–4 answers,RAG+MMR,auto_CSC_proxy@10,16133,14946,1187,0.8907499007007237
+3–4 answers,RAG+MMR,auto_consensus_any@10,16133,14946,1187,0.925886524822695
+3–4 answers,RAG+MMR,pooled_auto_alpha_nDCG@10,16133,16133,0,0.5979072249676483
+3–4 answers,RAG+MMR,near_duplicate_pair_fraction@10,16133,16133,0,0.678248173171622
+5–7 answers,RAG+MMR,auto_SFC@10,5179,5179,0,0.44279141771043157
+5–7 answers,RAG+MMR,auto_cross_source_SFC@10,5179,5179,0,0.44227391264571664
+5–7 answers,RAG+MMR,auto_CSC_proxy@10,5179,5165,14,0.8557215845357181
+5–7 answers,RAG+MMR,auto_consensus_any@10,5179,5165,14,0.8876298806066474
+5–7 answers,RAG+MMR,pooled_auto_alpha_nDCG@10,5179,5179,0,0.5570851035505304
+5–7 answers,RAG+MMR,near_duplicate_pair_fraction@10,5179,5179,0,0.722679195897964
+8 or more answers,RAG+MMR,auto_SFC@10,1940,1940,0,0.3171023932894564
+8 or more answers,RAG+MMR,auto_cross_source_SFC@10,1940,1940,0,0.31682880090246196
+8 or more answers,RAG+MMR,auto_CSC_proxy@10,1940,1940,0,0.7825386597938144
+8 or more answers,RAG+MMR,auto_consensus_any@10,1940,1940,0,0.8114604810996564
+8 or more answers,RAG+MMR,pooled_auto_alpha_nDCG@10,1940,1940,0,0.4836815972613666
+8 or more answers,RAG+MMR,near_duplicate_pair_fraction@10,1940,1940,0,0.7777319587628866
+2 answers,MedSAGE,auto_SFC@10,25924,25924,0,0.6618945853167131
+2 answers,MedSAGE,auto_cross_source_SFC@10,25924,25924,0,0.6519850233786255
+2 answers,MedSAGE,auto_CSC_proxy@10,25924,16062,9862,0.9261909950133709
+2 answers,MedSAGE,auto_consensus_any@10,25924,16062,9862,0.9614062472205916
+2 answers,MedSAGE,pooled_auto_alpha_nDCG@10,25924,25924,0,0.644797649647044
+2 answers,MedSAGE,near_duplicate_pair_fraction@10,25924,25924,0,0.4337833667643882
+3–4 answers,MedSAGE,auto_SFC@10,16133,16133,0,0.5947759548488393
+3–4 answers,MedSAGE,auto_cross_source_SFC@10,16133,16133,0,0.5871607387564336
+3–4 answers,MedSAGE,auto_CSC_proxy@10,16133,14946,1187,0.9095703527407663
+3–4 answers,MedSAGE,auto_consensus_any@10,16133,14946,1187,0.9460784751029633
+3–4 answers,MedSAGE,pooled_auto_alpha_nDCG@10,16133,16133,0,0.6330041248036118
+3–4 answers,MedSAGE,near_duplicate_pair_fraction@10,16133,16133,0,0.45856732577119363
+5–7 answers,MedSAGE,auto_SFC@10,5179,5179,0,0.4855486769395239
+5–7 answers,MedSAGE,auto_cross_source_SFC@10,5179,5179,0,0.4787239452789166
+5–7 answers,MedSAGE,auto_CSC_proxy@10,5179,5165,14,0.8723755743020022
+5–7 answers,MedSAGE,auto_consensus_any@10,5179,5165,14,0.9113482075631156
+5–7 answers,MedSAGE,pooled_auto_alpha_nDCG@10,5179,5179,0,0.5854485192052239
+5–7 answers,MedSAGE,near_duplicate_pair_fraction@10,5179,5179,0,0.4893522988135847
+8 or more answers,MedSAGE,auto_SFC@10,1940,1940,0,0.35049401314430356
+8 or more answers,MedSAGE,auto_cross_source_SFC@10,1940,1940,0,0.34555793717017824
+8 or more answers,MedSAGE,auto_CSC_proxy@10,1940,1940,0,0.7932824005891016
+8 or more answers,MedSAGE,auto_consensus_any@10,1940,1940,0,0.8364837997054492
+8 or more answers,MedSAGE,pooled_auto_alpha_nDCG@10,1940,1940,0,0.5082829468821569
+8 or more answers,MedSAGE,near_duplicate_pair_fraction@10,1940,1940,0,0.5139747995418098

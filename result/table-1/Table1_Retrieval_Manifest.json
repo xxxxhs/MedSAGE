@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "completed_queries": 49176,
+  "expected_queries": 49176,
+  "num_methods": 3,
+  "top_k": 10,
+  "config": {
+    "scheme_version": "stage3_full49176_v1_auditable_crd",
+    "queries": 49176,
+    "methods": [
+      "RAG",
+      "RAG+MMR",
+      "MedSAGE"
+    ],
+    "same_question_id_excluded": false,
+    "output_top_k": 10,
+    "encoder": "reuse Stage2 normalized M3E-Small vectors",
+    "index_type": "IndexHNSWFlat",
+    "efSearch": 128,
+    "baseline_RAG": "global_sentence_HNSW_cosine_top10",
+    "baseline_MMR": "global_sentence_HNSW_top50_then_greedy_MMR_lambda_0.5",
+    "medsage_candidate": "question_HNSW_top50 + answer_HNSW_top50; RRF_60 at answer-record level; best50 answer records; all associated original sentences",
+    "medsage_selector": "binary_degree_centrality_graph_cosine_ge_0.7; raw_query_cosine_relevance; dynamic_one_minus_max_cosine_diversity; each_component_minmax_constant_to_1; sum_1_1_1_greedy",
+    "candidate_pool_is_shared_between_methods": false,
+    "scientific_warning": "This method is explicitly specified but NOT verified bitwise identical to historical MedSAGE V4; confirm against frozen original method before claiming exact V4 replication."
+  },
+  "outputs": {
+    "RAG": {
+      "rows": 49176,
+      "unique_query_ids": 49176,
+      "sha256": "29a159c3e9e8c08a88ae5db18c87b5409c598a0d0d92df86855752065ca18c36"
+    },
+    "RAG+MMR": {
+      "rows": 49176,
+      "unique_query_ids": 49176,
+      "sha256": "26409328cd1ee652abb4b44adc0c1bc4692cefb88a22c569267edc768370656d"
+    },
+    "MedSAGE": {
+      "rows": 49176,
+      "unique_query_ids": 49176,
+      "sha256": "430f076b0f446a4ab2012aacf22097d80e02387a40a75d95227c9e6f3abc3e35"
+    }
+  },
+  "stage2_manifest_sha256": "62e13fb7fd7dae0ae16f859577efc3bc2061fd58600b282f1978d5d22eed00df",
+  "completed_at": "2026-11-03 00:40:53"
+}

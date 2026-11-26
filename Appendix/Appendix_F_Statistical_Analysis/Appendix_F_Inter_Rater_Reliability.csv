@@ -1,0 +1,5 @@
+﻿Dimension,ICC model,n outputs,"ICC(2,2)",95% CI lower,95% CI upper,95% CI,"ICC(2,1) supplementary",Bootstrap n,95% CI calculation method
+Clinical relevance,"ICC(2,2), absolute agreement",3200,0.910409,0.900893,0.920451,0.901–0.920,0.835552,1000,Question-cluster percentile bootstrap (200 question clusters; each selected cluster retains its 16 answers)
+Answer accuracy,"ICC(2,2), absolute agreement",3200,0.862530,0.846315,0.876731,0.846–0.877,0.758289,1000,Question-cluster percentile bootstrap (200 question clusters; each selected cluster retains its 16 answers)
+Actionability of advice,"ICC(2,2), absolute agreement",3200,0.853616,0.836773,0.868717,0.837–0.869,0.744616,1000,Question-cluster percentile bootstrap (200 question clusters; each selected cluster retains its 16 answers)
+Overall satisfaction,"ICC(2,2), absolute agreement",3200,0.839001,0.821936,0.855038,0.822–0.855,0.722654,1000,Question-cluster percentile bootstrap (200 question clusters; each selected cluster retains its 16 answers)

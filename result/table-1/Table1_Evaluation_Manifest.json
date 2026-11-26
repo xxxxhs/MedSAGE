@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope": "FULL49176_SOURCE_LINKED_RETRIEVAL_EVALUATION",
+  "queries": 49176,
+  "methods": [
+    "RAG",
+    "RAG+MMR",
+    "MedSAGE"
+  ],
+  "top_k": 10,
+  "evidence_verified": 1475280,
+  "same_question_id_excluded": false,
+  "source_link_relevance_definition": "evidence.source_qid == query.question_id",
+  "source_Recall@10_denominator": "all sentence records in the KB with the same question_id",
+  "source_MAP@10_normalizer": "min(total same-question sentence records,10)",
+  "EAC_definition": "unique same-question doc_id among Top10 divided by all answer records for that question",
+  "clinical_relevance_judged": false,
+  "clinical_facet_metrics_judged": false,
+  "NOT_COMPUTED": [
+    "clinical_nDCG@10",
+    "clinical_P@10",
+    "clinical_Recall@10",
+    "clinical_MAP@10",
+    "clinical_MRR@10",
+    "CFC@10",
+    "CSC@10",
+    "CVC@10",
+    "alpha_nDCG@10"
+  ],
+  "experimental_limitations": [
+    "Source-linked metrics measure return of historical records, NOT independent clinical usefulness.",
+    "MedSAGE uses question/answer retrieval channels, while baselines search global sentence vectors; candidate pools differ.",
+    "Historical answer rows have no verified independent doctor_id.",
+    "The Stage3 implementation was not proven identical to the historical frozen V4.",
+    "Same-question historical answers are retained: not an unseen-query generalization test."
+  ],
+  "statistical_method": "Paired percentile bootstrap with 1000 resamples (or normal approximation if NumPy unavailable)",
+  "clinical_annotation_pilot_sample_questions": 300,
+  "stage3_manifest_config": {
+    "scheme_version": "stage3_full49176_v1_auditable_crd",
+    "queries": 49176,
+    "methods": [
+      "RAG",
+      "RAG+MMR",
+      "MedSAGE"
+    ],
+    "same_question_id_excluded": false,
+    "output_top_k": 10,
+    "encoder": "reuse Stage2 normalized M3E-Small vectors",
+    "index_type": "IndexHNSWFlat",
+    "efSearch": 128,
+    "baseline_RAG": "global_sentence_HNSW_cosine_top10",
+    "baseline_MMR": "global_sentence_HNSW_top50_then_greedy_MMR_lambda_0.5",
+    "medsage_candidate": "question_HNSW_top50 + answer_HNSW_top50; RRF_60 at answer-record level; best50 answer records; all associated original sentences",
+    "medsage_selector": "binary_degree_centrality_graph_cosine_ge_0.7; raw_query_cosine_relevance; dynamic_one_minus_max_cosine_diversity; each_component_minmax_constant_to_1; sum_1_1_1_greedy",
+    "candidate_pool_is_shared_between_methods": false,
+    "scientific_warning": "This method is explicitly specified but NOT verified bitwise identical to historical MedSAGE V4; confirm against frozen original method before claiming exact V4 replication."
+  },
+  "created_at": "2026-11-03 10:39:56"
+}

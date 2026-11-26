@@ -1,0 +1,20 @@
+MedSAGE Stage 36 V3 | Table 9词典四类医学问题分层评价（参考图配色）
+
+Classification dictionary:
+E:\Desktop\10.25-结果\结果\Table 9\Table9_Medical_Entity_Dictionary.csv
+SHA256: 5bed6a698791498f276366f30909b07565a11c880ba1bcc1b1a8475588ad791a
+Question source:
+E:\Desktop\10.14\MedSAGE_FINAL_RETRIEVAL_V1\08_FULL49176_FINAL_TEMP07_TOPP09_NOTHINK_450CHARS_MAX750\Base_49176.jsonl
+
+总医学问题数: 49,176
+四类命中数量: {'Disease': 25171, 'Treatment': 2889, 'Examination': 3409, 'Drug': 747}
+没有命中任何类别: 20,850
+命中两个及以上类别: 3,650
+分类方式: Unicode NFKC、拉丁字母小写、去空白和标点，然后问题文本内按term精确子串匹配。
+一题可以属于多个类别，同类多关键词命中只计数一次。
+统计方法: 每模型×方法×类别内，按question ID筛选，并对逐题metrics数值做算术平均。
+n在一个类别中对全部模型×方法相同；类别间n之和可以超过49176。
+BLEU-2/ROUGE-L按原值乘100，BERTScore-F1(%)已是百分数，不再次乘100。
+METEOR-lite和CIDEr-lite按原始分数乘100，标注为×100，不能自动等同于标准METEOR/CIDEr。
+原始文件没有被覆盖；分类输出为基于Table9词典的新版实验，不可声称是历史版本原始词典的严格复现。
+本分析是question-category stratification，不是医疗术语真实召回率或医学事实准确率。
