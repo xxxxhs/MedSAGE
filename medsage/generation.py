@@ -5,7 +5,7 @@ import torch
 class GenerationConfig:
     temperature: float = 0.7
     top_p: float = 0.9
-    max_new_tokens: int = 1024
+    max_new_tokens: int = 750
     do_sample: bool = True
 
 class LocalHFGenerator:
